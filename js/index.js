@@ -2,6 +2,7 @@
 const images = document.querySelectorAll('img');
 const tablet = window.matchMedia("(max-width: 800px)");
 const bannerImage = document.querySelector('header img');
+const middleCards = document.querySelectorAll('.content-section');
 
 images.forEach(img => {                                            //Event 1
     img.addEventListener('mouseenter', e => {
@@ -12,7 +13,14 @@ images.forEach(img => {                                            //Event 1
         e.target.style.transform = 'scale(1)';
     });
     img.addEventListener('click', e => {
+        e.stopPropagation();
         e.target.style.transform = 'rotateY(180deg)';              //Event 4
+    });
+});
+
+middleCards.forEach(card => {
+    card.addEventListener('click', e => {
+        card.classList.toggle('dashed-border');                    //Event 5
     });
 });
 

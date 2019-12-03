@@ -356,3 +356,8 @@ img {
   background: #FFFFFF;
   color: #17A2B8;
 }
+.dashed-border {
+  border: 8px dashed steelblue;
+  border-radius: 20px;
+  padding: 10px;
+}
