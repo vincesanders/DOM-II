@@ -4,6 +4,8 @@ const tablet = window.matchMedia("(max-width: 800px)");
 const bannerImage = document.querySelector('header img');
 const middleCards = document.querySelectorAll('.content-section');
 const cursor = document.getElementById('cursor');
+const logo = document.querySelector('.logo-heading');
+const body = document.querySelector('body');
 
 images.forEach(img => {                                            //Event 1
     img.addEventListener('mouseenter', e => {
@@ -13,9 +15,10 @@ images.forEach(img => {                                            //Event 1
     img.addEventListener('mouseleave', e => {                      //Event 2
         e.target.style.transform = 'scale(1)';
     });
-    img.addEventListener('click', e => {
+    img.addEventListener('dblclick', e => {
         e.stopPropagation();
         e.target.style.transform = 'rotateY(180deg)';              //Event 4
+        expandingCircle(e);
     });
 });
 
@@ -38,12 +41,25 @@ window.addEventListener('mousemove', e => {                        //Event 6
     cursor.style.left = e.clientX - 25 + 'px';
 });
 
-document.addEventListener('click', e => {                         //Event 7
+document.addEventListener('click', expandingCircle);              //Event 7
+
+function expandingCircle(e) {
     let circle = document.createElement("circle");
     cursor.appendChild(circle);
     circle.style.top = e.clientY + "px";
     circle.style.left = e.clientX + "px";
     circle.addEventListener('animationend', e => {                //Event 8
-        e.target.parentElement.removeChild(circle);
+        circle.parentElement.removeChild(circle);
     });
+}
+
+logo.addEventListener('auxclick', e => {                         //Event 9
+    new Audio('sounds/horn.mp3').play()
+})
+
+document.addEventListener('keypress', e => {                     //Event 10
+    let circle = document.createElement("flying-circle");
+    body.appendChild(circle);
+    circle.style.top = Math.floor(Math.random() * screen.height) + "px";
+    circle.style.left = Math.floor(Math.random() * screen.width) + "px";
 });

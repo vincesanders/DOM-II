@@ -180,7 +180,8 @@ img {
   }
 }
 #cursor {
-  position: absolute;
+  pointer-events: none;
+  position: fixed;
   top: 50%;
   left: 50%;
   background: rgba(51, 51, 51, 0.8);
@@ -193,8 +194,9 @@ img {
   align-items: center;
 }
 #cursor circle {
+  pointer-events: auto;
   position: fixed;
-  border: solid yellow;
+  border: solid #888;
   border-radius: 50%;
   animation: clickEffect 0.8s ease-out;
   z-index: 3;
@@ -214,6 +216,16 @@ img {
     margin: -7.5rem;
     border-width: 0.03rem;
   }
+}
+flying-circle {
+  border-radius: 50%;
+  z-index: 4;
+  background: red;
+  position: fixed;
+  width: 15rem;
+  height: 15rem;
+  top: 50%;
+  left: 50%;
 }
 .main-navigation {
   width: 100%;
