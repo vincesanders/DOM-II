@@ -15,7 +15,7 @@ images.forEach(img => {                                            //Event 1
     img.addEventListener('mouseleave', e => {                      //Event 2
         e.target.style.transform = 'scale(1)';
     });
-    img.addEventListener('dblclick', e => {
+    img.addEventListener('click', e => {
         e.stopPropagation();
         e.target.style.transform = 'rotateY(180deg)';              //Event 4
         expandingCircle(e);
